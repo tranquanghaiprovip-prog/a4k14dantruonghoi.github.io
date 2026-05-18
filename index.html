@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A4K14 - Đại Gia Đình</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e1b4b,#312e81);
+    overflow-x:hidden;
+    color:white;
+}
+
+/* Màn hình chọn */
+#intro{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,#020617,#1e1b4b,#4c1d95);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    flex-direction:column;
+    text-align:center;
+    transition:1s;
+}
+
+#intro h1{
+    font-size:55px;
+    margin-bottom:20px;
+    background:linear-gradient(90deg,#38bdf8,#f472b6,#facc15);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:glow 2s infinite alternate;
+}
+
+#intro p{
+    color:#cbd5e1;
+    margin-bottom:30px;
+    font-size:20px;
+}
+
+.choose-box{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.choose{
+    padding:18px 35px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:20px;
+    font-weight:bold;
+    transition:0.4s;
+    border:none;
+    color:white;
+    background:linear-gradient(135deg,#06b6d4,#9333ea);
+    box-shadow:0 0 20px rgba(147,51,234,.5);
+}
+
+.choose:hover{
+    transform:scale(1.1);
+    background:linear-gradient(135deg,#f472b6,#facc15);
+}
+
+.hidden{
+    opacity:0;
+    visibility:hidden;
+}
+
+/* Nội dung chính */
+header{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+}
+
+header h2{
+    font-size:80px;
+    background:linear-gradient(90deg,#38bdf8,#f472b6,#facc15);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:glow 3s infinite alternate;
+}
+
+header p{
+    max-width:800px;
+    margin-top:20px;
+    font-size:22px;
+    color:#e2e8f0;
+}
+
+.nickname{
+    margin-top:30px;
+    font-size:35px;
+    font-weight:bold;
+    color:#facc15;
+}
+
+section{
+    padding:80px 10%;
+}
+
+.title{
+    text-align:center;
+    font-size:50px;
+    margin-bottom:50px;
+    color:#f472b6;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:20px;
+}
+
+.member{
+    padding:20px;
+    border-radius:20px;
+    background:rgba(255,255,255,.08);
+    text-align:center;
+    transition:.4s;
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.member:hover{
+    transform:translateY(-10px) scale(1.05);
+    background:linear-gradient(135deg,#06b6d4,#9333ea);
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#cbd5e1;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #38bdf8;
+    }
+    to{
+        text-shadow:0 0 30px #f472b6;
+    }
+}
+
+/* hạt bay */
+.star{
+    position:fixed;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:white;
+    opacity:.7;
+    animation:fly linear infinite;
+}
+
+@keyframes fly{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-100vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Màn hình chọn -->
+<div id="intro">
+    <h1>A4K14</h1>
+    <p>Chọn biệt danh lớp trưởng 😎</p>
+
+    <div class="choose-box">
+        <button class="choose" onclick="enterSite('👑 Boss Đại Ca')">
+            Boss Đại Ca
+        </button>
+
+        <button class="choose" onclick="enterSite('🔥 Khánh Thủ')">
+            Khánh Thủ
+        </button>
+
+        <button class="choose" onclick="enterSite('⚡ Hoàng Minh')">
+            Hoàng Minh
+        </button>
+    </div>
+</div>
+
+<!-- Nội dung web -->
+<header>
+    <h2>A4K14</h2>
+
+    <p>
+        Một đại gia đình với 42 thành viên đầy cá tính,
+        nơi lưu giữ thanh xuân rực rỡ, tình bạn và những
+        khoảnh khắc không thể quên ✨
+    </p>
+
+    <div class="nickname" id="nicknameText">
+        Biệt danh lớp trưởng: 👑 Boss Đại Ca
+    </div>
+</header>
+
+<section>
+    <h2 class="title">42 Thành Viên</h2>
+
+    <div class="grid">
+
+        <div class="member">Thành viên 1</div>
+        <div class="member">Thành viên 2</div>
+        <div class="member">Thành viên 3</div>
+        <div class="member">Thành viên 4</div>
+        <div class="member">Thành viên 5</div>
+        <div class="member">Thành viên 6</div>
+        <div class="member">Thành viên 7</div>
+        <div class="member">Thành viên 8</div>
+        <div class="member">Thành viên 9</div>
+        <div class="member">Thành viên 10</div>
+        <div class="member">Thành viên 11</div>
+        <div class="member">Thành viên 12</div>
+        <div class="member">Thành viên 13</div>
+        <div class="member">Thành viên 14</div>
+        <div class="member">Thành viên 15</div>
+        <div class="member">Thành viên 16</div>
+        <div class="member">Thành viên 17</div>
+        <div class="member">Thành viên 18</div>
+        <div class="member">Thành viên 19</div>
+        <div class="member">Thành viên 20</div>
+        <div class="member">Thành viên 21</div>
+        <div class="member">Thành viên 22</div>
+        <div class="member">Thành viên 23</div>
+        <div class="member">Thành viên 24</div>
+        <div class="member">Thành viên 25</div>
+        <div class="member">Thành viên 26</div>
+        <div class="member">Thành viên 27</div>
+        <div class="member">Thành viên 28</div>
+        <div class="member">Thành viên 29</div>
+        <div class="member">Thành viên 30</div>
+        <div class="member">Thành viên 31</div>
+        <div class="member">Thành viên 32</div>
+        <div class="member">Thành viên 33</div>
+        <div class="member">Thành viên 34</div>
+        <div class="member">Thành viên 35</div>
+        <div class="member">Thành viên 36</div>
+        <div class="member">Thành viên 37</div>
+        <div class="member">Thành viên 38</div>
+        <div class="member">Thành viên 39</div>
+        <div class="member">Thành viên 40</div>
+        <div class="member">Thành viên 41</div>
+        <div class="member">Thành viên 42</div>
+
+    </div>
+</section>
+
+<footer>
+    © 2026 A4K14 - Thanh xuân rực rỡ 🚀
+</footer>
+
+<script>
+function enterSite(name){
+    document.getElementById('intro').classList.add('hidden');
+    document.getElementById('nicknameText').innerHTML =
+        "Biệt danh lớp trưởng: " + name;
+}
+
+/* hiệu ứng sao bay */
+for(let i=0;i<80;i++){
+    let star=document.createElement("div");
+    star.classList.add("star");
+
+    star.style.left=Math.random()*100+"vw";
+    star.style.animationDuration=(3+Math.random()*7)+"s";
+    star.style.opacity=Math.random();
+
+    document.body.appendChild(star);
+}
+</script>
+
+</body>
+</html>
